@@ -1,6 +1,6 @@
-package com.itmuch.usercenter;
+package com.itmuch.contentcenter;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

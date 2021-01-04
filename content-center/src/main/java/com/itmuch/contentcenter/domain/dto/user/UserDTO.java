@@ -1,30 +1,28 @@
-package com.itmuch.usercenter.domain.entity.user;
+package com.itmuch.contentcenter.domain.dto.user;
 
+import lombok.Data;
+import javax.persistence.Id;
 import java.util.Date;
-import javax.persistence.*;
 
-import lombok.*;
+/**
+ * @author GEYP
+ * @version 1.0
+ * @date 2021/1/3 0003 16:26
+ * @description
+ */
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "user")
-public class User {
-    @Id
-    @GeneratedValue(generator = "JDBC")
+public class UserDTO {
     private Integer id;
 
     /**
      * 微信ID
      */
-    @Column(name = "wx_id")
     private String wxId;
 
     /**
      * 微信昵称
      */
-    @Column(name = "wx_nickname")
     private String wxNickname;
 
     /**
@@ -35,19 +33,16 @@ public class User {
     /**
      * 头像地址
      */
-    @Column(name = "avatar_url")
     private String avatarUrl;
 
     /**
      * 创建时间
      */
-    @Column(name = "create_time")
     private Date createTime;
 
     /**
      * 修改时间
      */
-    @Column(name = "update_time")
     private Date updateTime;
 
     /**

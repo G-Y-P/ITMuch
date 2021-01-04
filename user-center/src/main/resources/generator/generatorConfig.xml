@@ -12,7 +12,7 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
             <property name="caseSensitive" value="true"/>
-
+            <property name="lombok" value="Getter,Setter,ToString"/>
         </plugin>
 
         <jdbcConnection driverClass="${jdbc.driverClass}"
