@@ -32,7 +32,6 @@ public class ShareService {
     //调用用户微服务请求用户
     private final RestTemplate restTemplate;
 
-    private final DiscoveryClient discoveryClient;
 
     public ShareDTO findById(Integer id){
         //获取分享详情
@@ -44,16 +43,10 @@ public class ShareService {
         //了解Stream
         //Lambda表达式
         //functional->函数式编程
-        List<ServiceInstance> instances= discoveryClient.getInstances("user-center");
-        String targetUrl = instances.stream()
-                //数据变换
-                .map(instance->instance.getUri().toString()+"/users/{id}")
-                .findFirst()
-                .orElseThrow(()->new IllegalArgumentException("当前没有实例"));
-        log.info("打印URL：{}",targetUrl);
+
         //使用GEt方法请求
         UserDTO userDto = restTemplate.getForObject(
-                targetUrl,
+                "http://user-center/users/{userId}",
                 UserDTO.class,userId
         );
         ShareDTO shareDTO = new ShareDTO();

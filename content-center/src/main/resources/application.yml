@@ -1,12 +1,12 @@
 server:
-  port: 8086
+    port: 8086
 spring:
     datasource:
         url: jdbc:mysql://localhost:33066/content_center?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
         hikari:
-         username: root
-         password: 123456
-         driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
     cloud:
         nacos:
             discovery:
@@ -14,11 +14,15 @@ spring:
                 #环境隔离
                 #namespace: 2c75089f-8400-4320-9506-f48c153d8d17
                 #NJ    指定集群名称
-                #cluster-name: NJ
+                cluster-name: NJ
     application:
         #服务名称用-
         name: centent-center
-
+#饥饿加载
+ribbon:
+    eager-load:
+        enabled: true
+        clients: user-center
 
 
 

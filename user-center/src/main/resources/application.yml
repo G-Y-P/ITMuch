@@ -11,6 +11,8 @@ spring:
         nacos:
             discovery:
                 server-addr: 127.0.0.1:8848
+                #北京集群
+                cluster-name: NJ
     application:
         #服务名称用-
         name: user-center
