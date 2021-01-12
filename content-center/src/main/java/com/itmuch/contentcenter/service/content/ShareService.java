@@ -4,6 +4,7 @@ import com.itmuch.contentcenter.dao.content.ShareMapper;
 import com.itmuch.contentcenter.domain.dto.content.ShareDTO;
 import com.itmuch.contentcenter.domain.dto.user.UserDTO;
 import com.itmuch.contentcenter.domain.entity.content.Share;
+import com.itmuch.contentcenter.feginclient.UserCenterFeginClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -30,7 +31,7 @@ public class ShareService {
 
     private final ShareMapper shareMapper;
     //调用用户微服务请求用户
-    private final RestTemplate restTemplate;
+    private final UserCenterFeginClient userCenterFeginClient;
 
 
     public ShareDTO findById(Integer id){
@@ -45,14 +46,18 @@ public class ShareService {
         //functional->函数式编程
 
         //使用GEt方法请求
-        UserDTO userDto = restTemplate.getForObject(
+        /*UserDTO userDto = restTemplate.getForObject(
                 "http://user-center/users/{userId}",
                 UserDTO.class,userId
-        );
+        );*/
+
+        //使用Fegin
+        UserDTO userDTO=userCenterFeginClient.findById(userId);
+
         ShareDTO shareDTO = new ShareDTO();
         //消息装配
         BeanUtils.copyProperties(share,shareDTO);
-        shareDTO.setWxNickName(userDto.getWxNickname());
+        shareDTO.setWxNickName(userDTO.getWxNickname());
         return shareDTO;
     }
 }

@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8084
 spring:
     datasource:
         url: jdbc:mysql://localhost:33066/user_center?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
@@ -10,7 +10,10 @@ spring:
     cloud:
         nacos:
             discovery:
+                #指定服务地址
                 server-addr: 127.0.0.1:8848
+                # 指定namespace
+                # namespace: 2c75089f-8400-4320-9506-f48c153d8d17
                 #北京集群
                 cluster-name: NJ
     application:

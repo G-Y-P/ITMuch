@@ -11,8 +11,8 @@ spring:
         nacos:
             discovery:
                 server-addr: 127.0.0.1:8848
-                #环境隔离
-                #namespace: 2c75089f-8400-4320-9506-f48c153d8d17
+                #环境隔离，不能跨namespace调用
+                # namespace: 2c75089f-8400-4320-9506-f48c153d8d17
                 #NJ    指定集群名称
                 cluster-name: NJ
     application:
@@ -23,7 +23,9 @@ ribbon:
     eager-load:
         enabled: true
         clients: user-center
-
+logging:
+    level:
+        com.itmuch.contentcenter.feginclient.UserCenterFeginClient: debug
 
 
 
